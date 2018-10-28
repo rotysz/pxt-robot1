@@ -12,6 +12,7 @@ namespace Robot {
     const CMD_SETSPEED = "predkosc"
     const CMD_SETSPEEDL = "p_prawy"
     const CMD_SETSPEEDR = "p_lewy"
+    const CMD_CHGMTRSPEED = "zmienszybk"
     const CMD_CHGGROUP = "grupa"
 
     const MSG_DIST = "odleglosc"
@@ -77,6 +78,19 @@ namespace Robot {
         radio.sendValue(CMD_SETSPEEDL, Predkosc)
     }
     /**
+        * Zmiana predkosci na zadana predkosc w czasie ruchu 
+        * @param PredkoscLewy[-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+        * @param PredkoscPrawy[-255-255] predkosc wartosci dodatnie w przod ujemne w tyl
+        */
+    //% block
+    //% PredkoscLewy.min=-255 PredkoscLewy.max=255
+    //% PredkoscPrawy.min=-255 PredkoscPrawy.max=255
+    export function ZmienPredkosc(PredkoscLewy: number, PredkoscPrawy: number) {
+        let EncodedValue: number = (PredkoscLewy + 256) * 512 + (PredkoscPrawy + 256)
+        radio.sendValue(CMD_CHGMTRSPEED, EncodedValue)
+    }
+
+    /**
     * Zmiana Grupy radiowej na nowa na 60 sekund
     * @param NowaGrupa  [0-255] Nowa grupa radiowa 
     */
@@ -98,9 +112,9 @@ namespace Robot {
     export function Odleglosc(): number {
         return Distance
     }
-     /**
-    * Odczyt stanu czujnikow lini wartosci 0,1,10,11  
-    */
+    /**
+   * Odczyt stanu czujnikow lini wartosci 0,1,10,11  
+   */
 
     //% block 
     //% weight = 10
