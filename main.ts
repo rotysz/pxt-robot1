@@ -24,6 +24,7 @@ namespace Robot {
     * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
     */
     //% block
+    //% weight = 100
     //% CzasTrawnia.min=0 CzasTrwania.max=60000    
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
@@ -51,6 +52,7 @@ namespace Robot {
     * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
     */
     //% block
+    //% weight = 100
     //% Predkosc.min=-255 Predkosc.max=255
     export function Predkosc(Predkosc: number) {
         radio.sendValue(CMD_SETSPEED, Predkosc)
@@ -77,14 +79,19 @@ namespace Robot {
     export function Stop() {
         radio.sendValue(CMD_STOP, 0)
     }
-
+    /**
+    * Odczyt odleglosci z czujnika ultradzwiekowego w cm
+    * @param Odleglosc w cm 
+    */
     //% block="%Odleglosc|number"
+    //% weight = 10
     export function Odleglosc(): number {
         return Distance
     }
 
 
     //% block ="%CzujnikiLini|number"
+    //% weight = 10
     export function CzujnikiLini(): number {
         return LineSensors
     }
