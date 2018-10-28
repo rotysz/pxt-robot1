@@ -51,7 +51,7 @@ namespace Robot {
     }
     /**
     * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
-    * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+    * @param Predkosc [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
     */
     //% block
     //% weight = 100
@@ -95,7 +95,7 @@ namespace Robot {
     * @param NowaGrupa  [0-255] Nowa grupa radiowa 
     */
     //% block
-    //% NowaGrupa.min=-255 NowaGrupa.max=255
+    //% NowaGrupa.min=0 NowaGrupa.max=255
     export function ZmianaRadioGroup(NowaGrupa: number) {
         radio.sendValue(CMD_CHGGROUP, NowaGrupa)
     }
