@@ -16,7 +16,9 @@ namespace robot {
     const MSG_DIST = "odleglosc"
     const MSG_LINESENSORS = "czlini"
 
-    //% block
+    
+    //% blockId=robot_doprzodu 
+    //%block="DoPrzodu|number %CzasTrwania"    
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
     }
