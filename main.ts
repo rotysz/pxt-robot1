@@ -80,15 +80,16 @@ namespace Robot {
         radio.sendValue(CMD_STOP, 0)
     }
     /**
-    * Odczyt odleglosci z czujnika ultradzwiekowego w cm
-    
+    * Odczyt odleglosci z czujnika ultradzwiekowego w cm  
     */
     //% block
     //% weight = 10
     export function Odleglosc(): number {
         return Distance
     }
-
+     /**
+    * Odczyt stanu czujnikow lini wartosci 0,1,10,11  
+    */
 
     //% block 
     //% weight = 10
@@ -99,7 +100,6 @@ namespace Robot {
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
         if (msg == MSG_LINESENSORS) LineSensors = value
-        basic.pause(10)
     })
 
 }
