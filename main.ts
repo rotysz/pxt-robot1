@@ -1,4 +1,4 @@
-/**
+Robot.DoPrzodu(0)/**
  * Provides access to basic micro:bit functionality.
  */
 //% weight=5 color=#0fbc11 icon="\uf113" block="Robot"
@@ -16,30 +16,57 @@ namespace Robot {
     const MSG_DIST = "odleglosc"
     const MSG_LINESENSORS = "czlini"
 
-
+    /**
+    * Uruchomienie silników na zadany czas
+    * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
+    */
     //% block
-    //% CzasTrwania w milisekundach
     //% CzasTrawnia.min=0 CzasTrwania.max=60000    
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
     }
+    /**
+    * Jazda w lewo przez zadany czas
+    * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
+    */
     //% block
+    //% CzasTrawnia.min=0 CzasTrwania.max=60000
     export function WLewo(CzasTrwania: number) {
         radio.sendValue(CMD_LEFT, CzasTrwania)
     }
+    /**
+    * Jazda w prawo przez zadany czas
+    * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
+    */
     //% block
+    //% CzasTrawnia.min=0 CzasTrwania.max=60000
     export function WPrawo(CzasTrwania: number) {
         radio.sendValue(CMD_RIGHT, CzasTrwania)
     }
+    /**
+    * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
+    * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+    */
     //% block
+    //% Predkosc.min=-255 Predkosc.max=255
     export function Predkosc(Predkosc: number) {
         radio.sendValue(CMD_SETSPEED, Predkosc)
     }
+    /**
+    * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
+    * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+    */
     //% block
+    //% Predkosc.min=-255 Predkosc.max=255
     export function PredkoscPrawy(Predkosc: number) {
         radio.sendValue(CMD_SETSPEEDR, Predkosc)
     }
+    /**
+    * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
+    * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+    */
     //% block
+    //% Predkosc.min=-255 Predkosc.max=255
     export function PredkoscLewy(Predkosc: number) {
         radio.sendValue(CMD_SETSPEEDL, Predkosc)
     }
