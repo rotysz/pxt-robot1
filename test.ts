@@ -2,3 +2,4 @@
 Robot.Predkosc(50)
 Robot.DoPrzodu(1000)
 let n1=Robot.Odleglosc()
+Robot.ZmienPredkosc(0, 0)

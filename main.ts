@@ -80,8 +80,7 @@ namespace Robot {
     /**
         * Zmiana predkosci na zadana predkosc w czasie ruchu 
         * @param PredkoscLewy [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
-        * @param PredkoscPrawy 
-Robot.ZmienPredkosc(0, 0)[-255-255] predkosc wartosci dodatnie w przod ujemne w tyl
+        * @param PredkoscPrawy [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl
         */
     //% block
     //% PredkoscLewy.min=-255 PredkoscLewy.max=255
