@@ -21,6 +21,7 @@ namespace Robot {
     let Distance = 0;
     let LineSensors = 0;
 
+    
     /**
     * Uruchomienie silników na zadany czas
     * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
@@ -31,6 +32,7 @@ namespace Robot {
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
     }
+    
     /**
     * Jazda w lewo przez zadany czas
     * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
@@ -40,6 +42,7 @@ namespace Robot {
     export function WLewo(CzasTrwania: number) {
         radio.sendValue(CMD_LEFT, CzasTrwania)
     }
+    
     /**
     * Jazda w prawo przez zadany czas
     * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
@@ -49,6 +52,7 @@ namespace Robot {
     export function WPrawo(CzasTrwania: number) {
         radio.sendValue(CMD_RIGHT, CzasTrwania)
     }
+    
     /**
     * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
     * @param Predkosc [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
@@ -59,6 +63,7 @@ namespace Robot {
     export function Predkosc(Predkosc: number) {
         radio.sendValue(CMD_SETSPEED, Predkosc)
     }
+    
     /**
     * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
     * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
@@ -68,6 +73,7 @@ namespace Robot {
     export function PredkoscPrawy(Predkosc: number) {
         radio.sendValue(CMD_SETSPEEDR, Predkosc)
     }
+    
     /**
     * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
     * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
@@ -77,11 +83,12 @@ namespace Robot {
     export function PredkoscLewy(Predkosc: number) {
         radio.sendValue(CMD_SETSPEEDL, Predkosc)
     }
+    
     /**
-        * Zmiana predkosci na zadana predkosc w czasie ruchu 
-        * @param PredkoscLewy [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
-        * @param PredkoscPrawy [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl
-        */
+    * Zmiana predkosci na zadana predkosc w czasie ruchu 
+    * @param PredkoscLewy [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+    * @param PredkoscPrawy [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl
+    */
     //% block
     //% PredkoscLewy.min=-255 PredkoscLewy.max=255
     //% PredkoscPrawy.min=-255 PredkoscPrawy.max=255
@@ -104,6 +111,7 @@ namespace Robot {
     export function Stop() {
         radio.sendValue(CMD_STOP, 0)
     }
+    
     /**
     * Odczyt odleglosci z czujnika ultradzwiekowego w cm  
     */
@@ -112,6 +120,7 @@ namespace Robot {
     export function Odleglosc(): number {
         return Distance
     }
+    
     /**
    * Odczyt stanu czujnikow lini wartosci 0,1,10,11  
    */
