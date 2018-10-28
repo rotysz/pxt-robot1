@@ -16,6 +16,9 @@ namespace Robot {
     const MSG_DIST = "odleglosc"
     const MSG_LINESENSORS = "czlini"
 
+    let Distance = 0;
+    let LineSensors = 0;
+
     /**
     * Uruchomienie silników na zadany czas
     * @param CzasTrwania  [0-60000] czas trwania w milisekundach 
@@ -74,6 +77,22 @@ namespace Robot {
     export function Stop() {
         radio.sendValue(CMD_STOP, 0)
     }
+
+    //% block
+    export function Odleglosc():number {
+        return Distance
+    }
+
+    
+    //% block
+    export function CzujnikiLini(): number {
+        return LineSensors
+    }
+
+    radio.onReceivedValue(function (msg: string, value: number) {
+        if (msg == MSG_DIST) Distance = value
+        if (msg == MSG_LINESENSORS) LineSensors = value
+    })
 
 }
 
