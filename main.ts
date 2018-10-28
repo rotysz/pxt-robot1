@@ -1,7 +1,7 @@
 /**
  * Provides access to basic micro:bit functionality.
  */
-//% color=190 weight=100 icon="\uf1ec" block="Robot"
+//% weight=5 color=#0fbc11 icon="\uf113" block="Robot"
 namespace Robot {
 
     const CMD_EMPTY = "empty"
@@ -17,7 +17,9 @@ namespace Robot {
     const MSG_LINESENSORS = "czlini"
 
 
-    //% block    
+    //% block
+    //% CzasTrwania w milisekundach
+    //% CzasTrawnia.min=0 CzasTrwania.max=60000    
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
     }
