@@ -1,4 +1,4 @@
-Robot.DoPrzodu(0)/**
+/**
  * Provides access to basic micro:bit functionality.
  */
 //% weight=5 color=#0fbc11 icon="\uf113" block="Robot"
@@ -68,7 +68,7 @@ namespace Robot {
     }
     /**
     * Ustawienie predkosci na zadana predkosc bez uruchomienia silnikow
-    * @param Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
+    * @param %Predkosc  [-255-255] predkosc wartosci dodatnie w przod ujemne w tyl 
     */
     //% block
     //% Predkosc.min=-255 Predkosc.max=255
@@ -81,7 +81,7 @@ namespace Robot {
     }
     /**
     * Odczyt odleglosci z czujnika ultradzwiekowego w cm
-    * @param Odleglosc w cm 
+    
     */
     //% block="%Odleglosc|number"
     //% weight = 10
@@ -90,7 +90,7 @@ namespace Robot {
     }
 
 
-    //% block ="%CzujnikiLini|number"
+    //% block 
     //% weight = 10
     export function CzujnikiLini(): number {
         return LineSensors
