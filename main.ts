@@ -78,13 +78,13 @@ namespace Robot {
         radio.sendValue(CMD_STOP, 0)
     }
 
-    //% block="Odleglosc"
+    //% block="%Odleglosc|number"
     export function Odleglosc(): number {
         return Distance
     }
 
 
-    //% block ="czujnikLini"
+    //% block ="%CzujnikiLini|number"
     export function CzujnikiLini(): number {
         return LineSensors
     }
