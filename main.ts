@@ -2,7 +2,7 @@
  * Provides access to basic micro:bit functionality.
  */
 //% color=190 weight=100 icon="\uf1ec" block="Robot"
-namespace robot {
+namespace Robot {
 
     const CMD_EMPTY = "empty"
     const CMD_FWD = "do_przodu"
@@ -16,7 +16,7 @@ namespace robot {
     const MSG_DIST = "odleglosc"
     const MSG_LINESENSORS = "czlini"
 
-    
+
     //% block    
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
@@ -46,7 +46,6 @@ namespace robot {
         radio.sendValue(CMD_STOP, 0)
     }
 
-})
+}
 
 
-} 
