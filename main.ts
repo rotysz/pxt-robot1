@@ -140,6 +140,7 @@ namespace Robot {
         return ((LineSensors % 10) == 1)
     }
 
+
     /**
   * Odczyt stanu czujnika lini lewej True - dla białego podłoża  
   */
