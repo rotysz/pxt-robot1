@@ -105,6 +105,7 @@ namespace Robot {
     //% NowaGrupa.min=0 NowaGrupa.max=255
     export function ZmianaRadioGroup(NowaGrupa: number) {
         radio.sendValue(CMD_CHGGROUP, NowaGrupa)
+        radio.setGroup(NowaGrupa)
     }
 
     //% block
@@ -129,6 +130,25 @@ namespace Robot {
     export function CzujnikiLini(): number {
         return LineSensors
     }
+
+    /**
+    * Odczyt stanu czujnika lini prawej True - dla białego podłoża  
+    */
+    //% block 
+    //% weight = 10
+    export function LiniaPrawa(): boolean {
+        return ((LineSensors % 10) == 1)
+    }
+
+    /**
+  * Odczyt stanu czujnika lini lewej True - dla białego podłoża  
+  */
+    //% block 
+    //% weight = 10
+    export function LiniaLewa(): boolean {
+        return ((LineSensors % 10) == 0)
+    }
+
 
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
