@@ -1,4 +1,4 @@
-/**
+ /**
  * Provides access to basic micro:bit functionality.
  */
 //% weight=5 color=#0fbc11 icon="\uf113" block="Robot"
@@ -150,7 +150,16 @@ namespace Robot {
         return ((LineSensors % 10) == 0)
     }
 
-    
+    /**
+ * Odczyt stanu czujnika lini o zadanym numerze  
+ */
+    //% block 
+    //% weight = 15
+    //% CzujnikNo.min=1 CzujnikNo.max=5
+    export function StanLini(CzujnikNo: number = 1): number {
+        if (CzujnikNo < 6) return Math.idiv(LineSensors, Math.pow(10, CzujnikNo - 1)) % 10
+        else return 0
+    }
 
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
