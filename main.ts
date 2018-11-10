@@ -5,17 +5,20 @@
 namespace Robot {
 
     const CMD_EMPTY = "empty"
-    const CMD_FWD = "do_przodu"
+    const CMD_FWD = "do_przod"
     const CMD_LEFT = "w_lewo"
     const CMD_RIGHT = "w_prawo"
     const CMD_STOP = "stop"
     const CMD_SETSPEED = "predkosc"
     const CMD_SETSPEEDL = "p_prawy"
     const CMD_SETSPEEDR = "p_lewy"
-    const CMD_CHGMTRSPEED = "zmienszybk"
+    const CMD_CHGMTRSPEED = "zmienszy"
     const CMD_CHGGROUP = "grupa"
 
-    const MSG_DIST = "odleglosc"
+    const ON = true
+    const OFF = false
+
+    const MSG_DIST = "odleg"
     const MSG_LINESENSORS = "czlini"
 
     let Distance = 0;
