@@ -32,6 +32,7 @@ namespace Robot {
     let Distance = 0;
     let LineSensors = 0;
     let LastLSTime = -LS_ACTIVE
+    
 
     /**
     * Uruchomienie silników na zadany czas
