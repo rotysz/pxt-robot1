@@ -131,6 +131,20 @@ namespace Robot {
     //% block
     //% weight = 10
     export function Odleglosc(): number {
+        let endloop = false
+        let loopcount = 0
+
+        Distance = - 1
+        radio.sendValue(CMD_GETDIST, 1)
+        do {
+            basic.pause(1)
+            if (Distance < 0) loopcount = loopcount + 1
+            else {
+                endloop = true
+                            }
+            if (loopcount > 100) endloop = true
+
+        } while (!endloop)
         return Distance
     }
 
@@ -202,10 +216,9 @@ namespace Robot {
 
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
+        if (msg == RET_DIST) Distance = value
         if (msg == MSG_LINESENSORS) LineSensors = value
         if (msg == RET_LINESENSORS) LineSensors = value
-        if (msg == RET_DIST) Distance = value
-
     })
 
 }
