@@ -1,19 +1,22 @@
- /**
- * Provides access to basic micro:bit functionality.
- */
+/**
+* Provides access to basic micro:bit functionality.
+*/
 //% weight=5 color=#0fbc11 icon="\uf113" block="Robot"
 namespace Robot {
 
-    const CMD_EMPTY = "empty"
     const CMD_FWD = "do_przod"
     const CMD_LEFT = "w_lewo"
     const CMD_RIGHT = "w_prawo"
     const CMD_STOP = "stop"
+    const CMD_EMPTY = "empty"
     const CMD_SETSPEED = "predkosc"
     const CMD_SETSPEEDL = "p_prawy"
     const CMD_SETSPEEDR = "p_lewy"
     const CMD_CHGMTRSPEED = "zmienszy"
     const CMD_CHGGROUP = "grupa"
+    const CMD_GETDIST = "odl"
+    const CMD_GETLINE = "lsensor"
+    const CMD_SETOPT = "set_opt"
 
     const ON = true
     const OFF = false
@@ -21,9 +24,14 @@ namespace Robot {
     const MSG_DIST = "odleg"
     const MSG_LINESENSORS = "czlini"
 
+    const RET_DIST = "rodl"
+    const RET_LINESENSORS = "rlsens"
+
+    const LS_ACTIVE = 10
+
     let Distance = 0;
     let LineSensors = 0;
-
+    let LastLSTime = -LS_ACTIVE
 
     /**
     * Uruchomienie silników na zadany czas
@@ -125,12 +133,36 @@ namespace Robot {
         return Distance
     }
 
+    function GetLineSensors() {
+
+        if (input.runningTime() - LastLSTime >= LS_ACTIVE) {
+
+            let endloop = false
+            let loopcount = 0
+
+            LineSensors = - 1
+            radio.sendValue(CMD_GETLINE, 1)
+            do {
+                basic.pause(1)
+                if (LineSensors < 0) loopcount = loopcount + 1
+                else {
+                    endloop = true
+                    LastLSTime = input.runningTime()
+                }
+                if (loopcount > 100) endloop = true
+
+            } while (!endloop)
+
+        }
+    }
+
     /**
    * Odczyt stanu czujnikow lini wartosci 0,1,10,11  
    */
     //% block 
     //% weight = 10
     export function CzujnikiLini(): number {
+        GetLineSensors()
         return LineSensors
     }
 
@@ -140,6 +172,7 @@ namespace Robot {
     //% block 
     //% weight = 10
     export function LiniaPrawa(): boolean {
+        GetLineSensors()
         return ((LineSensors % 10) == 1)
     }
 
@@ -150,6 +183,7 @@ namespace Robot {
     //% block 
     //% weight = 10
     export function LiniaLewa(): boolean {
+        GetLineSensors()
         return ((LineSensors % 10) == 0)
     }
 
@@ -160,6 +194,7 @@ namespace Robot {
     //% weight = 15
     //% CzujnikNo.min=1 CzujnikNo.max=5
     export function StanLini(CzujnikNo: number = 1): number {
+        GetLineSensors()
         if (CzujnikNo < 6) return Math.idiv(LineSensors, Math.pow(10, CzujnikNo - 1)) % 10
         else return 0
     }
@@ -167,6 +202,9 @@ namespace Robot {
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
         if (msg == MSG_LINESENSORS) LineSensors = value
+        if (msg == RET_LINESENSORS) LineSensors = value
+        if (msg == RET_DIST) Distance = value
+
     })
 
 }
