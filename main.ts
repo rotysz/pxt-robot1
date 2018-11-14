@@ -27,7 +27,7 @@ namespace Robot {
     const RET_DIST = "rodl"
     const RET_LINESENSORS = "rlsens"
 
-    const LS_ACTIVE = 10
+    const LS_ACTIVE = 2
 
     let Distance = 0;
     let LineSensors = 0;
