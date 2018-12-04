@@ -18,6 +18,9 @@ namespace Robot {
     const CMD_GETLINE = "lsensor"
     const CMD_SETOPT = "set_opt"
     const CMD_GETDURATION = "dczas"
+    
+    const CMD_DISPSTR = "#ST#"
+    const CMD_DSPLED ="#LD#"
 
     const ON = true
     const OFF = false
@@ -250,6 +253,30 @@ namespace Robot {
         if (CzujnikNo < 6) return Math.idiv(LineSensors, Math.pow(10, CzujnikNo - 1)) % 10
         else return 0
     }
+
+    function SendDspVal (DspType : string, DspVal:string) {
+        let SendStr = DspType + DspVal
+        radio.sendString(SendStr)
+    }
+  
+   /**
+   * Wyswietlenie napisu na ekranie  
+   */
+    //% block 
+    //% weight = 15
+    export function WyswietlNapis(DspVal:string) {
+        SendDspVal(CMD_DISPSTR,DspVal)
+    }
+
+    /**
+     * Wyswietlenie obrazka  
+     */
+    //% block 
+    //% weight = 15
+    export function WyswietlObraz(DspVal: string) {
+        SendDspVal(CMD_DSPLED, DspVal)
+    }
+
 
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
