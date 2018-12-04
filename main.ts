@@ -17,6 +17,7 @@ namespace Robot {
     const CMD_GETDIST = "odl"
     const CMD_GETLINE = "lsensor"
     const CMD_SETOPT = "set_opt"
+    const CMD_GETDURATION = "dczas"
 
     const ON = true
     const OFF = false
@@ -26,12 +27,16 @@ namespace Robot {
 
     const RET_DIST = "rodl"
     const RET_LINESENSORS = "rlsens"
+    const RET_DURATION = "pczas"
+    const RET_END_TIME = "kczas"
 
     const LS_ACTIVE = 2
 
     let Distance = 0;
     let LineSensors = 0;
     let LastLSTime = -LS_ACTIVE
+    let Duration = - 1
+    let DurationRetRecv = false
     
 
     /**
@@ -170,6 +175,38 @@ namespace Robot {
 
         }
     }
+    
+    /**
+    * Odczyt pozostalego czasu pracy silnikow w ms  
+    */
+    //% block
+    //% weight = 10
+    export function PozostalyCzas():number {
+
+        if (input.runningTime() - LastLSTime >= LS_ACTIVE) {
+
+            let endloop = false
+            let loopcount = 0
+
+            Duration = - 1
+            DurationRetRecv = false
+            radio.sendValue(CMD_GETDURATION, 1)
+            do {
+                basic.pause(1)
+                if (!DurationRetRecv) loopcount = loopcount + 1
+                else {
+                    endloop = true
+                    LastLSTime = input.runningTime()
+                }
+                if (loopcount > 100) endloop = true
+
+            } while (!endloop)
+
+        }
+        if (Duration > 0 ) return Duration
+        else return 0 
+    }
+
 
     /**
    * Odczyt stanu czujnikow lini wartosci 0,1,10,11  
@@ -219,6 +256,10 @@ namespace Robot {
         if (msg == RET_DIST) Distance = value
         if (msg == MSG_LINESENSORS) LineSensors = value
         if (msg == RET_LINESENSORS) LineSensors = value
+        if (msg == RET_DURATION) {
+            Duration = value
+            DurationRetRecv = true
+        }    
     })
 
 }
