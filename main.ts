@@ -268,6 +268,15 @@ namespace Robot {
         SendDspVal(CMD_DISPSTR,DspVal)
     }
 
+    /**
+  * Wyswietlenie liczby na ekranie  
+  */
+    //% block 
+    //% weight = 15
+    export function WyswietlLiczbe(DspVal: number) {
+        SendDspVal(CMD_DISPSTR, DspVal.toString())
+    }
+
     function EncodeImage(Img: string): string {
         let len = Img.length
         let RetImg = ""
