@@ -263,7 +263,7 @@ namespace Robot {
    * Wyswietlenie napisu na ekranie  
    */
     //% block 
-    //% weight = 15
+    //% weight = 100
     export function WyswietlNapis(DspVal:string) {
         SendDspVal(CMD_DISPSTR,DspVal)
     }
@@ -272,7 +272,7 @@ namespace Robot {
   * Wyswietlenie liczby na ekranie  
   */
     //% block 
-    //% weight = 15
+    //% weight = 100
     export function WyswietlLiczbe(DspVal: number) {
         SendDspVal(CMD_DISPSTR, DspVal.toString())
     }
@@ -308,7 +308,7 @@ namespace Robot {
      * Wyswietlenie obrazka zakodowanego np. "10001 11111 00001 10101 11011"
      */
     //% block 
-    //% weight = 15
+    //% weight = 100
     export function WyswietlObraz(DspVal: string) {
         SendDspVal(CMD_DSPLED, EncodeImage(DspVal))
     }
