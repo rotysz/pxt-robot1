@@ -268,14 +268,43 @@ namespace Robot {
         SendDspVal(CMD_DISPSTR,DspVal)
     }
 
+    function EncodeImage(Img: string): string {
+        let len = Img.length
+        let RetImg = ""
+        let EncVal = 0
+        let count = 0
+        for (let i = 0; i < len; i++) {
+
+            let pix = Img.charAt(i)
+            if (pix != " ") count++
+            if (pix != "0" && pix != ".") EncVal = EncVal + 1
+            if (count != 5) EncVal = EncVal * 2
+            else {
+                if (EncVal < 10) RetImg = RetImg + "0" + EncVal.toString()
+                else RetImg = RetImg + EncVal.toString()
+                EncVal = 0
+                count = 0
+            }
+            // console.logValue("x", EncVal)
+        }
+        if (count != 0) {
+            if (EncVal < 10) RetImg = RetImg + "0" + EncVal.toString()
+            else RetImg = RetImg + EncVal.toString()
+        }
+        return RetImg
+
+    }
+
     /**
-     * Wyswietlenie obrazka  
+     * Wyswietlenie obrazka zakodowanego np. "10001 11111 00001 10101 11011"
      */
     //% block 
     //% weight = 15
     export function WyswietlObraz(DspVal: string) {
-        SendDspVal(CMD_DSPLED, DspVal)
+        SendDspVal(CMD_DSPLED, EncodeImage(DspVal))
     }
+
+    
 
 
     radio.onReceivedValue(function (msg: string, value: number) {
