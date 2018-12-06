@@ -20,7 +20,8 @@ namespace Robot {
     const CMD_GETDURATION = "dczas"
     
     const CMD_DISPSTR = "#ST#"
-    const CMD_DSPLED ="#LD#"
+    const CMD_DSPLED = "#LD#"
+    const CMD_DSPICON = "w_iko"
 
     const ON = true
     const OFF = false
@@ -40,7 +41,8 @@ namespace Robot {
     let LastLSTime = -LS_ACTIVE
     let Duration = - 1
     let DurationRetRecv = false
-    
+    let Running = false
+
 
     /**
     * Uruchomienie silników na zadany czas
@@ -51,6 +53,7 @@ namespace Robot {
     //% CzasTrwania.min=0 CzasTrwania.max=60000
     export function DoPrzodu(CzasTrwania: number) {
         radio.sendValue(CMD_FWD, CzasTrwania)
+        Running = true
     }
 
     /**
@@ -61,6 +64,7 @@ namespace Robot {
     //% CzasTrwania.min=0 CzasTrwania.max=60000
     export function WLewo(CzasTrwania: number) {
         radio.sendValue(CMD_LEFT, CzasTrwania)
+        Running = true
     }
 
     /**
@@ -71,6 +75,7 @@ namespace Robot {
     //% CzasTrwania.min=0 CzasTrwania.max=60000
     export function WPrawo(CzasTrwania: number) {
         radio.sendValue(CMD_RIGHT, CzasTrwania)
+        Running = true
     }
 
     /**
@@ -131,6 +136,7 @@ namespace Robot {
     //% block
     export function Stop() {
         radio.sendValue(CMD_STOP, 0)
+        Running = false
     }
 
     /**
@@ -149,7 +155,7 @@ namespace Robot {
             if (Distance < 0) loopcount = loopcount + 1
             else {
                 endloop = true
-                            }
+            }
             if (loopcount > 100) endloop = true
 
         } while (!endloop)
@@ -178,13 +184,13 @@ namespace Robot {
 
         }
     }
-    
+
     /**
     * Odczyt pozostalego czasu pracy silnikow w ms  
     */
     //% block
     //% weight = 10
-    export function PozostalyCzas():number {
+    export function PozostalyCzas(): number {
 
         if (input.runningTime() - LastLSTime >= LS_ACTIVE) {
 
@@ -206,8 +212,8 @@ namespace Robot {
             } while (!endloop)
 
         }
-        if (Duration > 0 ) return Duration
-        else return 0 
+        if (Duration > 0) return Duration
+        else return 0
     }
 
 
@@ -232,7 +238,7 @@ namespace Robot {
     }
 
 
-    /**
+  /**
   * Odczyt stanu czujnika lini lewej True - dla białego podłoża  
   */
     //% block 
@@ -254,18 +260,28 @@ namespace Robot {
         else return 0
     }
 
-    function SendDspVal (DspType : string, DspVal:string) {
+    /**
+  * Odczyt stanu ruchu robota  
+  */
+    //% block 
+    //% weight = 10
+    export function CzyWRuchu(): boolean {
+       return Running
+    }
+
+
+    function SendDspVal(DspType: string, DspVal: string) {
         let SendStr = DspType + DspVal
         radio.sendString(SendStr)
     }
-  
-   /**
-   * Wyswietlenie napisu na ekranie  
-   */
+
+    /**
+    * Wyswietlenie napisu na ekranie  
+    */
     //% block 
     //% weight = 100
-    export function WyswietlNapis(DspVal:string) {
-        SendDspVal(CMD_DISPSTR,DspVal)
+    export function WyswietlNapis(DspVal: string) {
+        SendDspVal(CMD_DISPSTR, DspVal)
     }
 
     /**
@@ -309,11 +325,19 @@ namespace Robot {
      */
     //% block 
     //% weight = 100
-    export function WyswietlObraz(DspVal: string) {
+    export function WyswietlObraz(DspVal: string = "10001 11111 00001 10101 11011") {
         SendDspVal(CMD_DSPLED, EncodeImage(DspVal))
     }
+     
+    /**
+     * Wyswietlenie ikony
+    */
+    //% block 
+    //% weight = 100
+    export function WyswietlIkone(DspVal: IconNames = IconNames.Heart) {
+        radio.sendValue(CMD_DSPICON, DspVal)
+    }
 
-    
 
 
     radio.onReceivedValue(function (msg: string, value: number) {
@@ -324,7 +348,8 @@ namespace Robot {
         if (msg == RET_DURATION) {
             Duration = value
             DurationRetRecv = true
-        }    
+        }
+        if (msg == RET_END_TIME) Running = false
     })
 
 }
