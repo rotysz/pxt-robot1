@@ -18,6 +18,7 @@ namespace Robot {
     const CMD_GETLINE = "lsensor"
     const CMD_SETOPT = "set_opt"
     const CMD_GETDURATION = "dczas"
+    const CMD_MRUG = "mrugaj"
     
     const CMD_DISPSTR = "#ST#"
     const CMD_DSPLED = "#LD#"
@@ -328,16 +329,16 @@ namespace Robot {
     export function WyswietlObraz(DspVal: string = "10001 11111 00001 10101 11011") {
         SendDspVal(CMD_DSPLED, EncodeImage(DspVal))
     }
-     
+    
     /**
-     * Wyswietlenie ikony
-    */
+     * Mruganie ledami  
+        
+        */
     //% block 
-    //% weight = 100
-    export function WyswietlIkone(DspVal: IconNames = IconNames.Heart) {
-        radio.sendValue(CMD_DSPICON, DspVal)
+    //% weight = 10
+    export function Mrugaj(DspVal: number) {
+        SendDspVal(CMD_MRUG, DspVal.toString())
     }
-
 
 
     radio.onReceivedValue(function (msg: string, value: number) {
