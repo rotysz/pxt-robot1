@@ -331,9 +331,8 @@ namespace Robot {
     }
 
     /**
-     * Mruganie ledami  
-        
-        */
+     * Mruganie ledami (podaj ile razy ma mrugac)     
+    */
     //% block 
     //% weight = 10
     export function Mrugaj(IleRazy: number) {
