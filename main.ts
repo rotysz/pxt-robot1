@@ -179,11 +179,12 @@ namespace Robot {
                 else {
                     endloop = true
                     LastLSTime = input.runningTime()
+                    LineSensors = TmpLineSensors
                 }
                 if (loopcount > 100) endloop = true
 
             } while (!endloop)
-            if (TmpLineSensors >= 0) LineSensors = TmpLineSensors
+
         }
     }
 
