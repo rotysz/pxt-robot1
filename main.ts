@@ -18,7 +18,8 @@ namespace Robot {
     const CMD_GETLINE = "lsensor"
     const CMD_SETOPT = "set_opt"
     const CMD_GETDURATION = "dczas"
-    
+    const CMD_MRUG = "mrugaj"
+
     const CMD_DISPSTR = "#ST#"
     const CMD_DSPLED = "#LD#"
     const CMD_DSPICON = "w_iko"
@@ -238,9 +239,9 @@ namespace Robot {
     }
 
 
-  /**
-  * Odczyt stanu czujnika lini lewej True - dla białego podłoża  
-  */
+    /**
+    * Odczyt stanu czujnika lini lewej True - dla białego podłoża  
+    */
     //% block 
     //% weight = 10
     export function LiniaLewa(): boolean {
@@ -266,7 +267,7 @@ namespace Robot {
     //% block 
     //% weight = 10
     export function CzyWRuchu(): boolean {
-       return Running
+        return Running
     }
 
 
@@ -328,16 +329,15 @@ namespace Robot {
     export function WyswietlObraz(DspVal: string = "10001 11111 00001 10101 11011") {
         SendDspVal(CMD_DSPLED, EncodeImage(DspVal))
     }
-     
+
     /**
-     * Wyswietlenie ikony
+     * Mruganie ledami (podaj ile razy ma mrugac)     
     */
     //% block 
-    //% weight = 100
-    export function WyswietlIkone(DspVal: IconNames = IconNames.Heart) {
-        radio.sendValue(CMD_DSPICON, DspVal)
+    //% weight = 10
+    export function Mrugaj(IleRazy: number) {
+        radio.sendValue(CMD_MRUG, IleRazy)
     }
-
 
 
     radio.onReceivedValue(function (msg: string, value: number) {
