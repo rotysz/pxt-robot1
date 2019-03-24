@@ -39,6 +39,7 @@ namespace Robot {
 
     let Distance = 0;
     let LineSensors = 0;
+    let TmpLineSensors = 0;
     let LastLSTime = -LS_ACTIVE
     let Duration = - 1
     let DurationRetRecv = false
@@ -170,14 +171,15 @@ namespace Robot {
             let endloop = false
             let loopcount = 0
 
-            LineSensors = - 1
+            TmpLineSensors = - 1
             radio.sendValue(CMD_GETLINE, 1)
             do {
                 basic.pause(1)
-                if (LineSensors < 0) loopcount = loopcount + 1
+                if (TmpLineSensors < 0) loopcount = loopcount + 1
                 else {
                     endloop = true
                     LastLSTime = input.runningTime()
+                    LineSensors = TmpLineSensors
                 }
                 if (loopcount > 100) endloop = true
 
@@ -355,7 +357,7 @@ namespace Robot {
         if (msg == MSG_DIST) Distance = value
         if (msg == RET_DIST) Distance = value
         if (msg == MSG_LINESENSORS) LineSensors = value
-        if (msg == RET_LINESENSORS) LineSensors = value
+        if (msg == RET_LINESENSORS) TmpLineSensors = value
         if (msg == RET_DURATION) {
             Duration = value
             DurationRetRecv = true
