@@ -330,11 +330,22 @@ namespace Robot {
         SendDspVal(CMD_DSPLED, EncodeImage(DspVal))
     }
 
+
+    /**
+     * Wyswietlenie ikony
+    */
+    //% block 
+    //% weight = 100
+    export function WyswietlIkone(DspVal: IconNames = IconNames.Heart) {
+        radio.sendValue(CMD_DSPICON, DspVal)
+    }
+
     /**
      * Mruganie ledami (podaj ile razy ma mrugac)     
     */
     //% block 
-    //% weight = 10
+    //% weight = 100
+    //% IleRazy.min=1 IleRazy.max=10
     export function Mrugaj(IleRazy: number) {
         radio.sendValue(CMD_MRUG, IleRazy)
     }
