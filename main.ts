@@ -438,7 +438,8 @@ namespace Robot {
      * Get the frequency of a note.
      * @param note the note name, eg: Note.C
      */
-    //% blockId=device_note block="$note"
+    //% blockId=device_note 
+    //% block="$note"
     //% shim=TD_ID
     //% color="#ffffff" colorSecondary="#ffffff" colorTertiary="#D83B01"
     //% note.fieldEditor="note" note.defl="262"
