@@ -24,6 +24,8 @@ namespace Robot {
     const CMD_LEDOFFL = "ledoffl"
     const CMD_LEDOFFR = "ledoffr"
     const CMD_RGBBLINK = "mrugrgb"
+    const CMD_RGBON = "rgbon"
+    const CMD_RGBOFF = "rgboff"
 
     const CMD_DISPSTR = "#ST#"
     const CMD_DSPLED = "#LD#"
@@ -401,6 +403,23 @@ namespace Robot {
     //% IleRazy.min=1 IleRazy.max=100
     export function MrugajRgb(IleRazy: number) {
         radio.sendValue(CMD_RGBBLINK, IleRazy)
+    }
+
+    /**
+    * Zapala wszystkie RGB od spodu (podaj kolor)     
+    */
+    //% block="RGB All On $color"
+    //% color.shadow="colorNumberPicker"
+    export function RgbAllOn(color: number) {
+        radio.sendValue(CMD_RGBON, color)
+    }
+
+    /**
+    * Gasi wszystkie RGB od spodu - ustawia na czarny     
+    */
+    //% block="RGB All Off"
+    export function RgbAllOff() {
+        radio.sendValue(CMD_RGBOFF, 0)
     }
 
     radio.onReceivedValue(function (msg: string, value: number) {
