@@ -353,7 +353,7 @@ namespace Robot {
     //% block = "MrugajLED"
     //% weight = 100
     //% IleRazy.min=1 IleRazy.max=10
-    export function MrugajLED(IleRazy: number) {
+    export function MrugajLed(IleRazy: number) {
         radio.sendValue(CMD_LEDBLINK, IleRazy)
     }
 
@@ -362,7 +362,7 @@ namespace Robot {
     */
     //% block = "LED On Lewy"
     //% weight = 100
-    export function LEDOnLewy() {
+    export function LedOnLewy() {
         radio.sendValue(CMD_LEDONL, 0)
     }
 
@@ -371,7 +371,7 @@ namespace Robot {
     */
     //% block = "LED On Prawy"
     //% weight = 100
-    export function LEDOnPrawy() {
+    export function LedOnPrawy() {
         radio.sendValue(CMD_LEDONR, 0)
     }
 
@@ -380,7 +380,7 @@ namespace Robot {
     */
     //% block = "LED Off Lewy"
     //% weight = 100
-    export function LEDOffLewy() {
+    export function LedOffLewy() {
         radio.sendValue(CMD_LEDOFFL, 0)
     }
 
@@ -389,7 +389,7 @@ namespace Robot {
     */
     //% block = "LED Off Prawy"
     //% weight = 100
-    export function LEDOffPrawy() {
+    export function LedOffPrawy() {
         radio.sendValue(CMD_LEDOFFR, 0)
     }
 
@@ -399,7 +399,7 @@ namespace Robot {
     //% block = "Mrugaj RGB"
     //% weight = 100
     //% IleRazy.min=1 IleRazy.max=100
-    export function MrugajRGB(IleRazy: number) {
+    export function MrugajRgb(IleRazy: number) {
         radio.sendValue(CMD_RGBBLINK, IleRazy)
     }
 
