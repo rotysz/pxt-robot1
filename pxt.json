@@ -1,6 +1,6 @@
 {
     "name": "pxt-EXT-robot",
-    "version": "0.0.37",
+    "version": "0.0.38",
     "description": "",
     "dependencies": {
         "core": "*",
