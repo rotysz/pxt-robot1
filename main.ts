@@ -350,7 +350,7 @@ namespace Robot {
     /**
      * Mruganie ledami (podaj ile razy ma mrugac)     
     */
-    //% block 
+    //% block = "MrugajLED"
     //% weight = 100
     //% IleRazy.min=1 IleRazy.max=10
     export function MrugajLED(IleRazy: number) {
@@ -360,7 +360,7 @@ namespace Robot {
     /**
     * Zapal Lewy LED      
     */
-    //% block 
+    //% block = "LED On Lewy"
     //% weight = 100
     export function LEDOnLewy() {
         radio.sendValue(CMD_LEDONL, 0)
@@ -369,7 +369,7 @@ namespace Robot {
     /**
     * Zapal Prawy LED      
     */
-    //% block 
+    //% block = "LED On Prawy"
     //% weight = 100
     export function LEDOnPrawy() {
         radio.sendValue(CMD_LEDONR, 0)
@@ -378,7 +378,7 @@ namespace Robot {
     /**
     * Zgas Lewy LED      
     */
-    //% block 
+    //% block = "LED Off Lewy"
     //% weight = 100
     export function LEDOffLewy() {
         radio.sendValue(CMD_LEDOFFL, 0)
@@ -387,7 +387,7 @@ namespace Robot {
     /**
     * Zgas Prawy LED      
     */
-    //% block 
+    //% block = "LED Off Prawy"
     //% weight = 100
     export function LEDOffPrawy() {
         radio.sendValue(CMD_LEDOFFR, 0)
@@ -396,7 +396,7 @@ namespace Robot {
     /**
     * Mruganie RGB od spodu (podaj ile razy ma mrugac)     
     */
-    //% block 
+    //% block = "Mrugaj RGB"
     //% weight = 100
     //% IleRazy.min=1 IleRazy.max=100
     export function MrugajRGB(IleRazy: number) {
