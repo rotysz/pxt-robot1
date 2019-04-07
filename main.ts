@@ -444,7 +444,7 @@ namespace Robot {
     //% note.fieldEditor="note" note.defl="262"
     //% note.fieldOptions.decompileLiterals=true
     //% useEnumVal=1
-    export function noteFrequency(note: Note): number {
+    export function noteFrequency(note: NoteNum): number {
         return note;
     }
 
@@ -463,4 +463,114 @@ namespace Robot {
 
 }
 
+enum NoteNum {
+    //% blockIdentity=Robot.noteFrequency enumval=262
+    C = 262,
+    //% block=C#
+    //% blockIdentity=Robot.noteFrequency enumval=277
+    CSharp = 277,
+    //% blockIdentity=Robot.noteFrequency enumval=294
+    D = 294,
+    //% blockIdentity=Robot.noteFrequency enumval=311
+    Eb = 311,
+    //% blockIdentity=Robot.noteFrequency enumval=330
+    E = 330,
+    //% blockIdentity=Robot.noteFrequency enumval=349
+    F = 349,
+    //% block=F#
+    //% blockIdentity=Robot.noteFrequency enumval=370
+    FSharp = 370,
+    //% blockIdentity=Robot.noteFrequency enumval=392
+    G = 392,
+    //% block=G#
+    //% blockIdentity=Robot.noteFrequency enumval=415
+    GSharp = 415,
+    //% blockIdentity=Robot.noteFrequency enumval=440
+    A = 440,
+    //% blockIdentity=Robot.noteFrequency enumval=466
+    Bb = 466,
+    //% blockIdentity=Robot.noteFrequency enumval=494
+    B = 494,
+    //% blockIdentity=Robot.noteFrequency enumval=131
+    C3 = 131,
+    //% block=C#3
+    //% blockIdentity=Robot.noteFrequency enumval=139
+    CSharp3 = 139,
+    //% blockIdentity=Robot.noteFrequency enumval=147
+    D3 = 147,
+    //% blockIdentity=Robot.noteFrequency enumval=156
+    Eb3 = 156,
+    //% blockIdentity=Robot.noteFrequency enumval=165
+    E3 = 165,
+    //% blockIdentity=Robot.noteFrequency enumval=175
+    F3 = 175,
+    //% block=F#3
+    //% blockIdentity=Robot.noteFrequency enumval=185
+    FSharp3 = 185,
+    //% blockIdentity=Robot.noteFrequency enumval=196
+    G3 = 196,
+    //% block=G#3
+    //% blockIdentity=Robot.noteFrequency enumval=208
+    GSharp3 = 208,
+    //% blockIdentity=Robot.noteFrequency enumval=220
+    A3 = 220,
+    //% blockIdentity=Robot.noteFrequency enumval=233
+    Bb3 = 233,
+    //% blockIdentity=Robot.noteFrequency enumval=247
+    B3 = 247,
+    //% blockIdentity=Robot.noteFrequency enumval=262
+    C4 = 262,
+    //% block=C#4
+    //% blockIdentity=Robot.noteFrequency enumval=277
+    CSharp4 = 277,
+    //% blockIdentity=Robot.noteFrequency enumval=294
+    D4 = 294,
+    //% blockIdentity=Robot.noteFrequency enumval=311
+    Eb4 = 311,
+    //% blockIdentity=Robot.noteFrequency enumval=330
+    E4 = 330,
+    //% blockIdentity=Robot.noteFrequency enumval=349
+    F4 = 349,
+    //% block=F#4
+    //% blockIdentity=Robot.noteFrequency enumval=370
+    FSharp4 = 370,
+    //% blockIdentity=Robot.noteFrequency enumval=392
+    G4 = 392,
+    //% block=G#4
+    //% blockIdentity=Robot.noteFrequency enumval=415
+    GSharp4 = 415,
+    //% blockIdentity=Robot.noteFrequency enumval=440
+    A4 = 440,
+    //% blockIdentity=Robot.noteFrequency enumval=466
+    Bb4 = 466,
+    //% blockIdentity=Robot.noteFrequency enumval=494
+    B4 = 494,
+    //% blockIdentity=Robot.noteFrequency enumval=523
+    C5 = 523,
+    //% block=C#5
+    //% blockIdentity=Robot.noteFrequency enumval=555
+    CSharp5 = 555,
+    //% blockIdentity=Robot.noteFrequency enumval=587
+    D5 = 587,
+    //% blockIdentity=Robot.noteFrequency enumval=622
+    Eb5 = 622,
+    //% blockIdentity=Robot.noteFrequency enumval=659
+    E5 = 659,
+    //% blockIdentity=Robot.noteFrequency enumval=698
+    F5 = 698,
+    //% block=F#5
+    //% blockIdentity=Robot.noteFrequency enumval=740
+    FSharp5 = 740,
+    //% blockIdentity=Robot.noteFrequency enumval=784
+    G5 = 784,
+    //% block=G#5
+    //% blockIdentity=Robot.noteFrequency enumval=831
+    GSharp5 = 831,
+    //% blockIdentity=Robot.noteFrequency enumval=880
+    A5 = 880,
+    //% blockIdentity=Robot.noteFrequency enumval=932
+    Bb5 = 932,
+    //% blockIdentity=Robot.noteFrequency enumval=988
+    B5 = 988,
+}
 
