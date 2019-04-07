@@ -26,6 +26,7 @@ namespace Robot {
     const CMD_RGBBLINK = "mrugrgb"
     const CMD_RGBON = "rgbon"
     const CMD_RGBOFF = "rgboff"
+    const CMD_PLAY = "graj"
 
     const CMD_DISPSTR = "#ST#"
     const CMD_DSPLED = "#LD#"
@@ -420,6 +421,17 @@ namespace Robot {
     //% block="RGB All Off"
     export function RgbAllOff() {
         radio.sendValue(CMD_RGBOFF, 0)
+    }
+
+
+    /**
+     * Play a tone
+     * @param note pitch of the tone to play in Hertz (Hz), eg: Note.C
+     */
+    //% block="play tone $note tone"
+    //% note.shadow="device_note"
+    export function PlayTone(Note: number) {
+        radio.sendValue(CMD_PLAY, Note)
     }
 
     radio.onReceivedValue(function (msg: string, value: number) {
