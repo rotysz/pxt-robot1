@@ -344,7 +344,7 @@ namespace Robot {
      * Wyswietlenie ikony
     */
     //% block 
-    //% weight = 100
+    //% weight=100
     export function WyswietlIkone(DspVal: IconNames = IconNames.Heart) {
         radio.sendValue(CMD_DSPICON, DspVal)
     }
@@ -352,8 +352,8 @@ namespace Robot {
     /**
      * Mruganie ledami (podaj ile razy ma mrugac)     
     */
-    //% block = "MrugajLED"
-    //% weight = 100
+    //% block="MrugajLED"
+    //% weight=10
     //% IleRazy.min=1 IleRazy.max=10
     export function MrugajLed(IleRazy: number) {
         radio.sendValue(CMD_LEDBLINK, IleRazy)
@@ -362,8 +362,8 @@ namespace Robot {
     /**
     * Zapal Lewy LED      
     */
-    //% block = "LED On Lewy"
-    //% weight = 100
+    //% block="LED On Lewy"
+    //% weight=100
     export function LedOnLewy() {
         radio.sendValue(CMD_LEDONL, 0)
     }
@@ -371,8 +371,8 @@ namespace Robot {
     /**
     * Zapal Prawy LED      
     */
-    //% block = "LED On Prawy"
-    //% weight = 100
+    //% block="LED On Prawy"
+    //% weight=10
     export function LedOnPrawy() {
         radio.sendValue(CMD_LEDONR, 0)
     }
@@ -380,8 +380,8 @@ namespace Robot {
     /**
     * Zgas Lewy LED      
     */
-    //% block = "LED Off Lewy"
-    //% weight = 100
+    //% block="LED Off Lewy"
+    //% weight=10
     export function LedOffLewy() {
         radio.sendValue(CMD_LEDOFFL, 0)
     }
@@ -389,8 +389,8 @@ namespace Robot {
     /**
     * Zgas Prawy LED      
     */
-    //% block = "LED Off Prawy"
-    //% weight = 100
+    //% block="LED Off Prawy"
+    //% weight=10
     export function LedOffPrawy() {
         radio.sendValue(CMD_LEDOFFR, 0)
     }
@@ -398,8 +398,8 @@ namespace Robot {
     /**
     * Mruganie RGB od spodu (podaj ile razy ma mrugac)     
     */
-    //% block = "Mrugaj RGB"
-    //% weight = 100
+    //% block="Mrugaj RGB"
+    //% weight=10
     //% IleRazy.min=1 IleRazy.max=100
     export function MrugajRgb(IleRazy: number) {
         radio.sendValue(CMD_RGBBLINK, IleRazy)
