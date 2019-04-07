@@ -18,7 +18,12 @@ namespace Robot {
     const CMD_GETLINE = "lsensor"
     const CMD_SETOPT = "set_opt"
     const CMD_GETDURATION = "dczas"
-    const CMD_MRUG = "mrugaj"
+    const CMD_LEDBLINK = "mrugled"
+    const CMD_LEDONL = "ledonl"
+    const CMD_LEDONR = "ledonr"
+    const CMD_LEDOFFL = "ledoffl"
+    const CMD_LEDOFFR = "ledoffr"
+    const CMD_RGBBLINK = "mrugrgb"
 
     const CMD_DISPSTR = "#ST#"
     const CMD_DSPLED = "#LD#"
@@ -348,10 +353,55 @@ namespace Robot {
     //% block 
     //% weight = 100
     //% IleRazy.min=1 IleRazy.max=10
-    export function Mrugaj(IleRazy: number) {
-        radio.sendValue(CMD_MRUG, IleRazy)
+    export function MrugajLED(IleRazy: number) {
+        radio.sendValue(CMD_LEDBLINK, IleRazy)
     }
 
+    /**
+    * Zapal Lewy LED      
+    */
+    //% block 
+    //% weight = 100
+    export function LEDOnLewy() {
+        radio.sendValue(CMD_LEDONL, 0)
+    }
+
+    /**
+    * Zapal Prawy LED      
+    */
+    //% block 
+    //% weight = 100
+    export function LEDOnPrawy() {
+        radio.sendValue(CMD_LEDONR, 0)
+    }
+
+    /**
+    * Zgas Lewy LED      
+    */
+    //% block 
+    //% weight = 100
+    export function LEDOffLewy() {
+        radio.sendValue(CMD_LEDOFFL, 0)
+    }
+
+    /**
+    * Zgas Prawy LED      
+    */
+    //% block 
+    //% weight = 100
+    export function LEDOffPrawy() {
+        radio.sendValue(CMD_LEDOFFR, 0)
+    }
+
+    /**
+    * Mruganie RGB od spodu (podaj ile razy ma mrugac)     
+    */
+    //% block 
+    //% weight = 100
+    //% IleRazy.min=1 IleRazy.max=100
+    export function MrugajRGB(IleRazy: number) {
+        radio.sendValue(CMD_RGBBLINK, IleRazy)
+    }
 
     radio.onReceivedValue(function (msg: string, value: number) {
         if (msg == MSG_DIST) Distance = value
