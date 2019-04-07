@@ -352,7 +352,7 @@ namespace Robot {
     /**
      * Mruganie ledami (podaj ile razy ma mrugac)     
     */
-    //% block="MrugajLED"
+    //% block="Mrugaj LED $IleRazy"
     //% weight=10
     //% IleRazy.min=1 IleRazy.max=10
     export function MrugajLed(IleRazy: number) {
@@ -398,7 +398,7 @@ namespace Robot {
     /**
     * Mruganie RGB od spodu (podaj ile razy ma mrugac)     
     */
-    //% block="Mrugaj RGB"
+    //% block="Mrugaj RGB $IleRazy"
     //% weight=10
     //% IleRazy.min=1 IleRazy.max=100
     export function MrugajRgb(IleRazy: number) {
