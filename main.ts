@@ -428,7 +428,7 @@ namespace Robot {
      * Play a tone
      * @param note pitch of the tone to play in Hertz (Hz), eg: Note.C
      */
-    //% block="play tone $note tone"
+    //% block="play tone %note tone"
     //% note.shadow="device_note"
     export function PlayTone(NoteNum: number) {
         radio.sendValue(CMD_PLAY, NoteNum)
@@ -439,7 +439,7 @@ namespace Robot {
      * @param note the note name, eg: Note.C
      */
     //% blockId=device_note 
-    //% block="$note"
+    //% block="%note"
     //% shim=TD_ID
     //% color="#ffffff" colorSecondary="#ffffff" colorTertiary="#D83B01"
     //% note.fieldEditor="note" note.defl="262"
