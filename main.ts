@@ -380,7 +380,7 @@ namespace Robot {
 
     /**
     * Zgas Lewy LED      
-    */aa
+    *
     //% block="LED Off Lewy"
     //% weight=10
     export function LedOffLewy() {
