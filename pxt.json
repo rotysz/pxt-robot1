@@ -1,7 +1,7 @@
 {
-    "name": "pxt-robot1",
-    "version": "0.0.37",
-    "description": "",
+    "name": "pxt-EXT-robot",
+    "version": "0.0.50",
+    "description": "Library extenstion for Robot/Car",
     "dependencies": {
         "core": "*",
         "radio": "*"
